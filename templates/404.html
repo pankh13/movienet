@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Movie Recommender</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/myfreestyle.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+
+</head>
+<body class="p-3 mb-2 bg-light text-dark">
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <div  class="mx-auto" style="width: 440px;">
+            <h1>
+                <br>
+                <br>
+                <br>
+               
+                Oops!</h1>
+                <p></p>
+            <h2>
+                Not Found</h2>
+        </div>
+        <div  class="mx-auto" style="width: 440px;">
+            <br>Sorry, the movie you searched is not included in the database. 
+            <br>Please select from the dropdown list.<br><br>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+         
+      </div>
+      <div class="col-sm">
+        <form class="form-inline my-2 my-lg-2" method=post  action="{{ url_for('searchMovie')}}">
+            <input type="hidden" name=search value ="The Dark Knight Rises">
+            <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Back</button>
+        </form>
+      </div>
+      <div class="col-sm">
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

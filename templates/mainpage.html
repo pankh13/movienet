@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Movie Recommender</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/myfreestyle.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+
+</head>
+<body>
+
+<!--\\sdfsdf -->
+<style>
+
+p.small2{
+    font-size: 90%;
+    font-weight: 400;
+	line-height: 110%;
+}
+
+</style>
+
+<style>
+
+  p.small3{
+      font-size: 80%;
+      font-weight: 400;
+      line-height: 200%;
+      text-align: center;
+      white-space: normal;
+
+    
+  }
+  
+  </style>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="">Github <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">Contact</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Functions
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="">Genre Prediction</a>
+          <a class="dropdown-item" href="">Review</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="">something to add</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-2" method=post  action="{{ url_for('searchMovie')}}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name=search style="width: 426px;" id=search_box>
+      <div class='invisible' id=file_location value={{ movieList[17]}}> </div>
+      <button class="btn btn-outline-primary" type="submit" id=search_button><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</nav>
+
+
+
+
+<div class="container-fluid"><br/></div>
+
+
+<div class="container-fluid">
+ 
+
+
+ 
+<div class="row">
+  <div class="col-sm-4" style="
+  padding-left: 15px; 
+	">
+  
+  <!--    here comes an ajax       -->
+  <img class="img-fluid" alt="Responsive image" src="{{ url_for('static', filename= 'poster/'+movieList[1])+'.jpg' }}" alt="Card image cap">
+  
+
+
+
+
+</div>
+  <div class="col-sm-3" style="padding-left: 15px;">
+  <h1>{{ movieList[0] }} <h2 class="text-capitalize"><small class="text-muted">{{movieList[14][0]}},&nbsp{{movieList[14][1]}}</small></h2></h1>
+	<blockquote class="blockquote">
+  <p class = "small2"><small>{{movieList[15]}}</small></p>
+	<footer class="blockquote-footer">review ---- <cite title="Source Title"> {{movieList[16]}}</cite></footer>
+	</blockquote>
+  </div>
+
+
+<div class="col-sm-5">
+ 
+
+  
+  
+  
+    <div class="row">
+          <div class="col-4">
+            <form method=post name=search2 action="{{ url_for('searchMovie')}}" class="inline">
+            <input type="hidden" name=search value ="{{ movieList[2] }}">
+            <button type="submit"  class="btn btn-light btn-lg btn-block" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;">
+              <img class="img-fluid" alt="Responsive image" src="{{ url_for('static', filename= 'poster/'+movieList[3])+'.jpg' }}">       
+              <p class="small3">{{ movieList[2] }}</p>
+            </button>
+            </form>
+          </div>
+          <div class="col-4">
+            <form method=post name=search2 action="{{ url_for('searchMovie')}}" class="inline">
+            <input type="hidden" name=search value ="{{ movieList[4] }}">
+            <button type="submit"  class="btn btn-light btn-lg btn-block" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;">
+              <img class="img-fluid" alt="Responsive image" src="{{ url_for('static', filename= 'poster/'+movieList[5])+'.jpg' }}">       
+              <p class="small3">{{ movieList[4] }}</p>
+            </button>
+            </form>
+          </div>
+          <div class="col-4">
+            <form method=post name=search2 action="{{ url_for('searchMovie')}}" class="inline">
+            <input type="hidden" name=search value ="{{ movieList[6] }}">
+            <button type="submit"  class="btn btn-light btn-lg btn-block" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;">
+              <img class="img-fluid" alt="Responsive image" src="{{ url_for('static', filename= 'poster/'+movieList[7])+'.jpg' }}">       
+              <p class="small3">{{ movieList[6] }}</p>
+            </button>
+            </form>
+          </div>
+
+
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <form method=post name=search2 action="{{ url_for('searchMovie')}}" class="inline">
+        <input type="hidden" name=search value ="{{ movieList[8] }}">
+        <button type="submit"  class="btn btn-light btn-lg btn-block" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;">
+          <img class="img-fluid" alt="Responsive image" src="{{ url_for('static', filename= 'poster/'+movieList[9])+'.jpg' }}">       
+          <p class="small3">{{ movieList[8] }}</p>
+        </button>
+        </form>
+      </div>
+      <div class="col-4">
+        <form method=post name=search2 action="{{ url_for('searchMovie')}}" class="inline">
+        <input type="hidden" name=search value ="{{ movieList[10] }}">
+        <button type="submit"  class="btn btn-light btn-lg btn-block" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;">
+          <img class="img-fluid" alt="Responsive image" src="{{ url_for('static', filename= 'poster/'+movieList[11])+'.jpg' }}">       
+          <p class="small3">{{ movieList[10] }}</p>
+        </button>
+        </form>
+      </div>
+      <div class="col-4">
+        <form method=post name=search2 action="{{ url_for('searchMovie')}}" class="inline">
+        <input type="hidden" name=search value ="{{ movieList[12] }}">
+        <button type="submit"  class="btn btn-light btn-lg btn-block" style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;">
+          <img class="img-fluid" alt="Responsive image" src="{{ url_for('static', filename= 'poster/'+movieList[13])+'.jpg' }}">       
+          <p class="small3">{{ movieList[12] }}</p>
+        </button>
+        </form>
+      </div>
+
+
+</div>
+  
+</div>
+
+  </body>
+
+  <script>
+
+      var tags = {{ movieList[17]|tojson }};
+      console.log(tags)
+      $( "#search_box" ).autocomplete({
+        source: function( request, response ) {
+                var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+                response( $.grep( tags, function( item ){
+                    return matcher.test( item );
+                }) );
+            }
+      });
+      </script>
+</html>
