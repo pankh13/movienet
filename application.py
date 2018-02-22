@@ -35,7 +35,9 @@ def out_similar(movieid):
 '''
 @application.route('/')
 def main():
-    return render_template('home.html')
+    with open('movielist','r') as f:
+        movies = f.read().split('\n')
+    return render_template('home.html',movieList = movies)
 
 
 @application.route('/movie', methods=['GET', 'POST'])
@@ -49,20 +51,28 @@ def searchMovie():
             return render_template('404.html')
         return render_template('mainpage.html', movieList=result)
     return render_template('mainpage.html', movieList=out_similar("The Dark Knight Rises"))
+
 '''
-
-
 @application.route('/', methods=['GET', 'POST'])
 def searchMovie():
     error = None
     if request.method == 'POST':
         movieid = request.form['search']
         result = out_similar(movieid)
-        print(result)
+       # print(result)
         if result == None:
             return render_template('404.html')
         return render_template('mainpage.html', movieList=result)
     return render_template('mainpage.html', movieList=out_similar("The Dark Knight Rises"))
+
+@application.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@application.route('/resume')
+def resume():
+    return render_template('resume.html')
+
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.

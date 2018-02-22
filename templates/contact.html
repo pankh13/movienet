@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Movie Recommender</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/myfreestyle.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+<style>
+body { 
+  background: url({{ url_for('static', filename= 'poster/'+'Movies')+'.jpg' }}) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.container2{
+padding: 0px;   
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container2">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style = "opacity: 0.7;border-top-width: 10px;">
+  <a class="navbar-brand" href="{{ url_for('searchMovie')}}">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="https://github.com/pankh13">Github <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('contact')}}">Contact</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Data Source 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://snap.stanford.edu/data/web-Movies.html">Reviews</a>
+          <a class="dropdown-item" href="https://advertising.amazon.com/API">Posters</a>
+      <!--    <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="">something to add</a>
+        </div> -->
+      </li>
+    </ul>
+   
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      
+    </div>
+    <div class="col-sm">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="card" style="width: 18rem;">
+        
+        <div class="card-body">
+          <h5 class="card-title">Eric Kehan Pan</h5>
+          <h6 class="card-subtitle mb-2 text-muted">MSiA, Northwestern <br></h6>
+          <address>
+            
+            945 Chicago Ave, Apt 3J,
+            Evantson,
+            IL,<br>
+            U.S.
+          </address>
+          <a href="mailto:kehanpan@outlook.com" class="card-link">Email</a>
+          <a href="{{url_for('resume')}}" class="card-link">Resume</a>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+</div>
+</body>    
+</html>

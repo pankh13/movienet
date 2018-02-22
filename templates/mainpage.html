@@ -51,21 +51,21 @@ p.small2{
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="">Github <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="https://github.com/pankh13">Github <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Contact</a>
+        <a class="nav-link" href="{{ url_for('contact')}}">Contact</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Functions
+          Data Source 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="">Genre Prediction</a>
-          <a class="dropdown-item" href="">Review</a>
-          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://snap.stanford.edu/data/web-Movies.html">Reviews</a>
+          <a class="dropdown-item" href="https://advertising.amazon.com/API">Posters</a>
+      <!--    <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="">something to add</a>
-        </div>
+        </div> -->
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-2" method=post  action="{{ url_for('searchMovie')}}">
@@ -185,7 +185,7 @@ p.small2{
   <script>
 
       var tags = {{ movieList[17]|tojson }};
-      console.log(tags)
+  //  console.log(tags)
       $( "#search_box" ).autocomplete({
         source: function( request, response ) {
                 var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
