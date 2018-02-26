@@ -12,12 +12,15 @@ application.config.from_object(__name__) # load config from this file , flaskr.p
 # Load default config and override config from an environment variable
 
 
-driver = 'postgresql+psycopg2://'
+#driver = 'postgresql+psycopg2://'
 
-application.config['SQLALCHEMY_DATABASE_URI'] = driver \
-                                        + os.environ['RDS_USERNAME'] + ':' + os.environ['RDS_PASSWORD'] \
-                                        +'@' + os.environ['RDS_HOSTNAME']  +  ':' + os.environ['RDS_PORT'] \
-                                        + '/' + os.environ['RDS_DB_NAME']
+#application.config['SQLALCHEMY_DATABASE_URI'] = driver \
+ #                                       + os.environ['RDS_USERNAME'] + ':' + os.environ['RDS_PASSWORD'] \
+  #                                      +'@' + os.environ['RDS_HOSTNAME']  +  ':' + os.environ['RDS_PORT'] \
+   #                                     + '/' + os.environ['RDS_DB_NAME']
+
+
+application.config['SQLALCHEMY_DATABASE_URI'] ='postgresql+psycopg2://root:19950519@ericdbinstance.cidcmcwt0iep.us-west-2.rds.amazonaws.com:5432/movies'
 
 data = pd.read_csv("result.csv")
 #data.to_csv("result.csv")
