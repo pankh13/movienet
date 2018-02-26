@@ -83,7 +83,7 @@ def add_entry():
 def out_similar(movieid):
     '''get similar movie and related infos of the searched object; return none for exception'''
     try:
-        result = data2.loc[data2['0'] == movieid]
+        result = data.loc[data['0'] == movieid]
         for i in result.iterrows():
             index, output = i
             output = output.tolist()
