@@ -12,7 +12,12 @@ application.config.from_object(__name__) # load config from this file , flaskr.p
 # Load default config and override config from an environment variable
 
 
+driver = 'postgresql+psycopg2://'
 
+application.config['SQLALCHEMY_DATABASE_URI'] = driver \
+                                        + os.environ['RDS_USERNAME'] + ':' + os.environ['RDS_PASSWORD'] \
+                                        +'@' + os.environ['RDS_HOSTNAME']  +  ':' + os.environ['RDS_PORT'] \
+                                        + '/' + os.environ['RDS_DB_NAME']
 
 data = pd.read_csv("result.csv")
 #data.to_csv("result.csv")
@@ -76,5 +81,7 @@ def resume():
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
+    from sqlalchemy import create_engine
+    engine = create_engine(DB_URL)
     application.debug = True
     application.run()
