@@ -81,8 +81,6 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     data = pd.read_csv("result.csv")
-    from sqlalchemy import create_engine
-    engine = create_engine(DB_URL)
-    data.to_sql(name='client_history', con = engine, if_exists = 'append', index=False)
+    
     application.debug = True
     application.run()
