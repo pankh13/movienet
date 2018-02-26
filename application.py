@@ -12,7 +12,7 @@ if 'RDS_HOSTNAME' in os.environ:
 
     POSTGRES_PW = os.environ['RDS_PASSWORD']
 
-    POSTGRES_URL =os.environ['RDS_DB_NAME'] +':'+os.environ['RDS_PORT']
+    POSTGRES_URL ="aa17r6yquq9zgm3.cidcmcwt0iep.us-west-2.rds.amazonaws.com:5432"
 
     POSTGRES_DB = os.environ['RDS_DB_NAME']
 
@@ -26,9 +26,16 @@ application.config.from_object(__name__) # load config from this file , flaskr.p
 
 
 
-DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
+#DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
 
-application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
+#application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
+driver = 'postgresql+psycopg2://'
+
+application.config['SQLALCHEMY_DATABASE_URI'] = driver \
+                                        + os.environ['RDS_USERNAME'] + ':' + os.environ['RDS_PASSWORD'] \
+                                        +'@' + os.environ['RDS_HOSTNAME']  +  ':' + os.environ['RDS_PORT'] \
+                                        + '/' + os.environ['RDS_DB_NAME']
+
 application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
 
 
@@ -97,6 +104,7 @@ def searchMovie():
         result = out_similar(movieid)
        # print(result)
         if result == None:
+            
             return render_template('404.html')
         return render_template('mainpage.html', movieList=result)
     return render_template('mainpage.html', movieList=out_similar("The Dark Knight Rises"))
