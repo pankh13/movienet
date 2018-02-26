@@ -83,5 +83,6 @@ if __name__ == "__main__":
     # removed before deploying a production app.
     from sqlalchemy import create_engine
     engine = create_engine(DB_URL)
+    data.to_sql(name='result', con = engine, if_exists = 'append', index=False)
     application.debug = True
     application.run()
