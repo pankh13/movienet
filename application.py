@@ -25,7 +25,7 @@ data = pd.read_csv("result.csv")
 def out_similar(movieid):
     #print(movieid)
     try:
-        result = data.loc[data['0'] == movieid]
+        result = data2.loc[data2['0'] == movieid]
         for i in result.iterrows():
             index, output = i
             output = output.tolist()
@@ -84,5 +84,6 @@ if __name__ == "__main__":
     from sqlalchemy import create_engine
     engine = create_engine(DB_URL)
     data.to_sql(name='result', con = engine, if_exists = 'append', index=False)
+
     application.debug = True
     application.run()
