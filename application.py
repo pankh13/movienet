@@ -24,7 +24,7 @@ application.config['SQLALCHEMY_DATABASE_URI'] = driver \
 def out_similar(movieid):
     #print(movieid)
     try:
-        result = data2.loc[data2['0'] == movieid]
+        result = data.loc[data['0'] == movieid]
         for i in result.iterrows():
             index, output = i
             output = output.tolist()
