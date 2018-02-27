@@ -90,7 +90,7 @@ if __name__ == "__main__":
     from sqlalchemy import create_engine
     engine = create_engine(DB_URL)
     
-    data.to_sql(name='result', con = engine, if_exists = 'append', index=False)
-    data2 = pd.read_sql_query('select * from client_history',con=engine)
+    #data.to_sql(name='result', con = engine, if_exists = 'append', index=False)
+    data2 = pd.read_sql_query('select * from result',con=engine)
     application.debug = True
     application.run()
