@@ -21,8 +21,8 @@ application.config['SQLALCHEMY_DATABASE_URI'] = driver \
 '''
 
 application.config['SQLALCHEMY_DATABASE_URI'] ='postgresql+psycopg2://root:19950519@ericdbinstance.cidcmcwt0iep.us-west-2.rds.amazonaws.com:5432/movies'
-DB_URL = 'postgresql+psycopg2://root:19950519@aaf7l9wrkrsj4t.cidcmcwt0iep.us-west-2.rds.amazonaws.com:5432/'+os.environ['RDS_DB_NAME']
-
+#DB_URL = 'postgresql+psycopg2://root:19950519@aaf7l9wrkrsj4t.cidcmcwt0iep.us-west-2.rds.amazonaws.com:5432/'+os.environ['RDS_DB_NAME']
+DB_URL = 'postgresql+psycopg2://root:19950519@ericdbinstance.cidcmcwt0iep.us-west-2.rds.amazonaws.com:5432/movies'
 
 data = pd.read_csv("result.csv")
 #data.to_csv("result.csv")
