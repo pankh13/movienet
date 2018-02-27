@@ -107,12 +107,13 @@ def resume():
     return render_template('resume.html')
 
 if __name__ == "__main__":
-    data = pd.read_csv("result.csv")
+   # data = pd.read_csv("result.csv")
     from sqlalchemy import create_engine
     engine = create_engine(DB_URL)
     #data.to_sql(name='result', con = engine, if_exists = 'append', index=False)
     data2 = pd.read_sql_query('select * from result',con=engine)
     # Setting debug to True enables debug output. This line should be
+    print("Batman")
     print(data2.loc[data2['0'] == 'Batman'])
    # print(pd.read_sql_query("select * from client_history where '0' ='Batman'",con=engine))
     # removed before deploying a production app.
