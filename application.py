@@ -71,7 +71,7 @@ def add_entry():
 def out_similar(movieid):
     '''get similar movie and related infos of the searched object; return none for exception'''
     try:
-        result = data2.loc[data2['0'] == movieid]
+        result = data.loc[data['0'] == movieid]
         for i in result.iterrows():
             index, output = i
             output = output.tolist()
@@ -107,7 +107,7 @@ def resume():
     return render_template('resume.html')
 
 if __name__ == "__main__":
-   # data = pd.read_csv("result.csv")
+    data = pd.read_csv("result.csv")
     from sqlalchemy import create_engine
     engine = create_engine(DB_URL)
     #data.to_sql(name='result', con = engine, if_exists = 'append', index=False)
