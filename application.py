@@ -28,7 +28,7 @@ DB_URL = 'postgresql+psycopg2://root:19950519@ericdbinstance.cidcmcwt0iep.us-wes
 
 application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
-
+data = pd.read_csv("result.csv")
 
 def connect_db():
     """Connects to the specific database."""
@@ -91,7 +91,7 @@ def searchMovie():
         movieid = request.form['search']
         result = out_similar(movieid)
        # print(result)
-        if result == None:
+        if result == None or result == 0:
             return render_template('404.html')
         return render_template('mainpage.html', movieList=result)
     return render_template('mainpage.html', movieList=out_similar("The Dark Knight Rises"))
