@@ -13,17 +13,6 @@ application.config.from_object(__name__) # load config from this file , flaskr.p
 
 # Load default config and override config from an environment variable
 
-
-POSTGRES_USER = 'eric'
-
-POSTGRES_PW = '950519'
-
-POSTGRES_URL = "127.0.0.1:5432"
-
-POSTGRES_DB = 'movies'
-
-
-DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
 DB_URL = 'postgresql+psycopg2://root:19950519@ericdbinstance.cidcmcwt0iep.us-west-2.rds.amazonaws.com:5432/movies'
 
 application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
@@ -32,45 +21,7 @@ from sqlalchemy import create_engine
 engine = create_engine(DB_URL)
 #data.to_sql(name='result', con = engine, if_exists = 'append', index=False)
 data = pd.read_sql_query('select * from result',con=engine)
-
-def connect_db():
-    """Connects to the specific database."""
-    return SQLAlchemy(application) 
-
-def get_db():
-    """Opens a new database connection if there is none yet for the
-    current application context.
-    """
-    if not hasattr(g, 'postgres_db'):
-        g.postgres_db = connect_db()
-    return g.postgres_db
-
-@application.teardown_appcontext
-def close_db(error):
-    """Closes the database again at the end of the request."""
-    if hasattr(g, 'postgres_b'):
-        g.postgres_db.close()
-
-def init_db():
-    '''initialize the database'''
-    db = get_db()
-    with app.open_resource('schema.sql', mode='r') as f:
-        db.cursor().executescript(f.read())
-    db.commit()
-
-def show_entries():
-    '''get the result data from database'''
-    db = get_db()
-    cur = db.execute('select * from entries order by id desc')
-    return cur.fetchall
-
-def add_entry():
-    db = get_db()
-    db.execute('insert into entries (title, text) values (?, ?)',
-                 [request.form['title'], request.form['text']])
-    db.commit()
-    flash('New entry was successfully posted')
-
+db = SQLAlchemy(application)
 def out_similar(movieid):
     '''get similar movie and related infos of the searched object; return none for exception'''
     try:
@@ -95,6 +46,9 @@ def searchMovie():
         result = out_similar(movieid)
        # print(result)
         if result == None or result == 0:
+            miss = Other(moviename = request.form['search'],updated = int(time.time()))
+            db.session.add(miss)
+            db.session.commit()
             return render_template('404.html')
         return render_template('mainpage.html', movieList=result)
     return render_template('mainpage.html', movieList=out_similar("The Dark Knight Rises"))
@@ -108,6 +62,16 @@ def contact():
 def resume():
     '''resume page function'''
     return render_template('resume.html')
+
+
+class Other(db.Model):
+    '''queries that are not found'''
+    id = db.Column(db.Integer, primary_key=True)
+    moviename = db.Column(db.String(80), unique=True, nullable=False)
+    updated = db.Column(db.DateTime, onupdate=int(time.time()))
+    def __repr__(self):
+        return '<User %r>' % self.moviename
+
 
 if __name__ == "__main__":
     data = pd.read_csv("result.csv")
