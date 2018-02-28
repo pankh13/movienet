@@ -28,7 +28,10 @@ DB_URL = 'postgresql+psycopg2://root:19950519@ericdbinstance.cidcmcwt0iep.us-wes
 
 application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
-data = pd.read_csv("result.csv")
+from sqlalchemy import create_engine
+engine = create_engine(DB_URL)
+#data.to_sql(name='result', con = engine, if_exists = 'append', index=False)
+data = pd.read_sql_query('select * from result',con=engine)
 
 def connect_db():
     """Connects to the specific database."""
