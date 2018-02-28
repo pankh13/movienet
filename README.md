@@ -1,4 +1,9 @@
-# Movie Recomendation Website (deployed version 1.0)
+# Movie Recomendation Website (deployed version 1.1)
+
+## Update
+
+* Added RDS connection;
+* Store unsuccessful queries into db.
 
 Visit the [website](http://movienet.us-west-2.elasticbeanstalk.com) for the deployed version.
 This website is based on the movie [recommender algorithm](https://github.com/pankh13/NLP_movie_recommender). The results are not calculated each time; instead, they are pre-generated into a file to save storage and computation power of the server.  
