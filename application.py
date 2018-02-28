@@ -5,6 +5,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2
+import time
 
 
 
