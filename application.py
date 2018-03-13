@@ -75,7 +75,7 @@ class Other(db.Model):
 
 
 if __name__ == "__main__":
-    data = pd.read_csv("result.csv")
+   # data = pd.read_csv("result.csv")
     #from sqlalchemy import create_engine
     #engine = create_engine(DB_URL)
     #data.to_sql(name='result', con = engine, if_exists = 'append', index=False)
