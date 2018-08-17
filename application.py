@@ -64,7 +64,6 @@ def resume():
     '''resume page function'''
     return render_template('resume.html')
 
-
 class Other(db.Model):
     '''queries that are not found'''
     id = db.Column(db.Integer, primary_key=True)
