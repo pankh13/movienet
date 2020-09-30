@@ -1,7 +1,6 @@
 # all the imports
 import os
-from flask import Flask, request, session, g, redirect, url_for, abort, \
-     render_template, flash
+from flask import Flask, request, session, g, redirect, url_for, abort,render_template, flash
 import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2
